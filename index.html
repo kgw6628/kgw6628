@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>소방설비기사 기출문제 학습 플랫폼</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-color: #e1e4e8;
+            --correct-color: #2ecc71;
+            --wrong-color: #e74c3c;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        
+        #app-container { max-width: 600px; margin: 0 auto; background-color: var(--bg-color); min-height: 100vh; position: relative; padding-bottom: 80px; }
+        
+        header { background-color: var(--card-bg); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 1.2rem; font-weight: bold; color: var(--primary-color); cursor: pointer; }
+        .header-btns button { padding: 8px 12px; border: none; border-radius: 5px; background-color: #edf2f7; color: var(--text-main); font-size: 0.9rem; cursor: pointer; margin-left: 5px;}
+        
+        .view { display: none; padding: 20px; }
+        .view.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .subject-card { background: var(--card-bg); padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid var(--border-color); transition: 0.2s; }
+        .subject-card:active { transform: scale(0.98); }
+        .subject-card h2 { font-size: 1.2rem; margin-bottom: 5px; }
+        
+        .year-list { display: flex; flex-direction: column; gap: 10px; }
+        .year-item { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; }
+        .year-header { padding: 15px; font-weight: bold; cursor: pointer; background-color: #f8fafc; }
+        .session-list { display: none; padding: 10px; background: var(--card-bg); border-top: 1px solid var(--border-color); gap: 10px; flex-wrap: wrap; }
+        .session-list.active { display: flex; }
+        .session-btn { flex: 1; min-width: 30%; padding: 10px; text-align: center; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer; }
+
+        .progress-bar { font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px; font-weight: bold; }
+        .question-box { background: var(--card-bg); padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .question-text { font-size: 1.1rem; font-weight: bold; margin-bottom: 20px; word-break: keep-all; }
+        .option-label { display: block; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+        .option-label.selected { border-color: var(--primary-color); background-color: #ebf4fc; }
+        .option-label.correct { border-color: var(--correct-color); background-color: #eafaf1; }
+        .option-label.wrong { border-color: var(--wrong-color); background-color: #fdedec; }
+        .option-label input { display: none; }
+        
+        .explanation-box { display: none; margin-top: 20px; padding: 15px; background-color: #f8fafc; border-left: 4px solid var(--primary-color); border-radius: 5px; max-height: 200px; overflow-y: auto; font-size: 0.95rem; }
+        
+        .action-btn { width: 100%; padding: 15px; font-size: 1.1rem; font-weight: bold; color: white; background-color: var(--primary-color); border: none; border-radius: 8px; cursor: pointer; margin-top: 10px;}
+        .nav-btns { display: none; gap: 10px; margin-top: 10px; }
+        .nav-btns button { flex: 1; padding: 15px; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; }
+        .btn-next { background-color: var(--text-main); color: white; }
+        
+        .result-box { text-align: center; background: var(--card-bg); padding: 40px 20px; border-radius: 10px; margin-top: 20px; }
+        .score-text { font-size: 3rem; font-weight: bold; color: var(--primary-color); margin: 20px 0; }
+        .wrong-note-item { background: var(--card-bg); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--wrong-color); }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+    <header>
+        <h1 onclick="navigate('dashboard')">🔥 소방기사 패스</h1>
+        <div class="header-btns">
+            <button onclick="navigate('wrongNotes')">오답노트</button>
+            <button onclick="navigate('dashboard')">홈</button>
+        </div>
+    </header>
+<div id="d-day-container" style="background: #fff; padding: 15px; margin: 10px 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center;">
+    <h3 id="d-day-title" style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">📅 시험까지 남은 시간</h3>
+    <div id="countdown" style="font-size: 1.4rem; font-weight: bold; color: #e74c3c;">00일 00:00:00</div>
+</div>
+    <main id="view-dashboard" class="view active">
+        <div class="subject-card" onclick="openSubject('소방원론')">
+            <h2>🔥 제1과목: 소방원론</h2>
+            <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
+        </div>
+        <div class="subject-card" onclick="openSubject('소방전기일반')">
+            <h2>⚡ 제2과목: 소방전기일반</h2>
+            <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
+        </div>
+        <div class="subject-card" onclick="openSubject('소방관계법규')">
+            <h2>📜 제3과목: 소방관계법규</h2>
+            <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
+        </div>
+        <div class="subject-card" onclick="openSubject('소방전기시설의 구조 및 원리')">
+            <h2>🏢 제4과목: 소방전기시설</h2>
+            <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
+        </div>
+    </main>
+
+    <main id="view-subject" class="view">
+        <h2 id="subject-title" style="margin-bottom: 20px;"></h2>
+        <div class="year-list" id="year-container">
+            </div>
+    </main>
+
+    <main id="view-quiz" class="view">
+        <div class="progress-bar" id="quiz-progress">문제 1 / 20</div>
+        <div class="question-box">
+            <div class="question-text" id="q-text">질문 로딩중...</div>
+            <div id="options-container"></div>
+            <div class="explanation-box" id="explanation-box"></div>
+        </div>
+        <button class="action-btn" id="btn-check" onclick="checkAnswer()">정답 확인</button>
+        <div class="nav-btns" id="nav-btns">
+            <button class="btn-next" id="btn-next" onclick="nextQuestion()">다음 문제</button>
+        </div>
+    </main>
+
+    <main id="view-result" class="view">
+        <div class="result-box">
+            <h2>시험 종료!</h2>
+            <div class="score-text" id="final-score">100점</div>
+            <p id="score-detail" style="margin-bottom: 20px;"></p>
+            <button class="action-btn" onclick="navigate('wrongNotes')">오답노트 확인하기</button>
+            <button class="action-btn" style="background-color: var(--text-light); margin-top:10px;" onclick="navigate('dashboard')">메인으로 돌아가기</button>
+        </div>
+    </main>
+
+    <main id="view-wrong-notes" class="view">
+        <h2 style="margin-bottom: 20px;">내 오답노트 📝</h2>
+        <div id="wrong-notes-container"></div>
+    </main>
+</div>
+
+<script>
+    let currentQuizData = [];
+    let currentQIndex = 0;
+    let score = 0;
+    let selectedOption = null;
+    let isAnswerChecked = false;
+    let globalWrongNotes = [];
+// D-Day 설정 (시험 날짜를 입력하세요)
+const targetDate = new Date("2026-05-19T14:10:00").getTime(); // 시험일시
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "시험이 시작되었습니다!";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = 
+        `${days}일 ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+// 1초마다 업데이트
+setInterval(updateCountdown, 1000);
+updateCountdown();
+    function navigate(viewId) {
+        document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+        document.getElementById(`view-${viewId}`).classList.add('active');
+        if (viewId === 'wrongNotes') renderWrongNotes();
+    }
+
+    // 🚀 과목을 선택하면 2025년부터 2015년까지 목록을 자동으로 만들어주는 함수
+    function openSubject(subjectName) {
+        document.getElementById('subject-title').innerText = subjectName;
+        const container = document.getElementById('year-container');
+        container.innerHTML = '';
+
+        let html = '';
+        for (let y = 2025; y >= 2015; y--) {
+            html += `
+            <div class="year-item">
+                <div class="year-header" onclick="toggleSessions(this)">${y}년도 ▼</div>
+                <div class="session-list">
+                    <button class="session-btn" onclick="fetchQuizData('${subjectName}', ${y}, 1)">1회차</button>
+                    <button class="session-btn" onclick="fetchQuizData('${subjectName}', ${y}, 2)">2회차</button>
+                    <button class="session-btn" onclick="fetchQuizData('${subjectName}', ${y}, 4)">4회차</button>
+                </div>
+            </div>
+            `;
+        }
+        container.innerHTML = html;
+        navigate('subject');
+    }
+
+    function toggleSessions(element) {
+        element.nextElementSibling.classList.toggle('active');
+    }
+
+    // 🚀 파라미터로 받은 정보로 파일명을 정확히 조립하는 함수
+    async function fetchQuizData(subject, year, session) {
+        // 예: /json_results/소방원론_2023_1.json
+        const fileName = `/json_results/${subject}_${year}_${session}.json`; 
+        
+        try {
+            const response = await fetch(fileName);
+            if (!response.ok) throw new Error('서버에서 파일을 찾을 수 없습니다.');
+            
+            const data = await response.json();
+            
+            // 무적 방어 코드
+            if (data.questions) {
+                currentQuizData = data.questions; 
+            } else if (Array.isArray(data) && data.length > 0 && data[0].questions) {
+                currentQuizData = data[0].questions; 
+            } else if (Array.isArray(data)) {
+                currentQuizData = data; 
+            } else {
+                throw new Error("JSON 파일 안에 문제 데이터가 없습니다.");
+            }
+
+            currentQIndex = 0;
+            score = 0;
+            navigate('quiz');
+            renderQuestion();
+            
+        } catch (error) {
+            console.error("데이터 로딩 에러:", error);
+            alert(`🚨 에러 발생!\n[${subject} ${year}년 ${session}회차] 파일을 찾을 수 없습니다.\n해당 파일(${subject}_${year}_${session}.json)이 json_results 폴더에 있는지 확인해주세요!`);
+        }
+    }
+
+    // --- 나머지 렌더링 함수들 (이전과 동일) ---
+    function renderQuestion() {
+        const q = currentQuizData[currentQIndex];
+        isAnswerChecked = false;
+        selectedOption = null;
+
+        document.getElementById('quiz-progress').innerText = `문제 ${currentQIndex + 1} / ${currentQuizData.length}`;
+        document.getElementById('q-text').innerText = `${q.id}. ${q.question}`;
+        
+        const optContainer = document.getElementById('options-container');
+        optContainer.innerHTML = '';
+        
+        q.options.forEach((opt, index) => {
+            const optNum = index + 1; 
+            const label = document.createElement('label');
+            label.className = 'option-label';
+            label.innerHTML = `
+                <input type="radio" name="quiz-opt" value="${optNum}" onchange="selectOption(${optNum}, this)">
+                ${optNum}. ${opt}
+            `;
+            optContainer.appendChild(label);
+        });
+
+        document.getElementById('btn-check').style.display = 'block';
+        document.getElementById('nav-btns').style.display = 'none';
+        document.getElementById('explanation-box').style.display = 'none';
+    }
+
+    function selectOption(optNum, element) {
+        if (isAnswerChecked) return;
+        selectedOption = optNum;
+        document.querySelectorAll('.option-label').forEach(el => el.classList.remove('selected'));
+        element.parentElement.classList.add('selected');
+    }
+
+    function checkAnswer() {
+        if (!selectedOption) {
+            alert('보기를 선택해주세요!');
+            return;
+        }
+
+        isAnswerChecked = true;
+        const q = currentQuizData[currentQIndex];
+        const isCorrect = (selectedOption === q.answer);
+        
+        const labels = document.querySelectorAll('.option-label');
+        labels.forEach(label => {
+            const inputVal = parseInt(label.querySelector('input').value);
+            if (inputVal === q.answer) label.classList.add('correct');
+            else if (inputVal === selectedOption && !isCorrect) label.classList.add('wrong');
+        });
+
+        const expBox = document.getElementById('explanation-box');
+        expBox.style.display = 'block';
+        if (isCorrect) {
+            score += (100 / currentQuizData.length);
+            expBox.innerHTML = `<strong style="color:var(--correct-color)">정답입니다! 🎉</strong><br><br>${q.explanation}`;
+        } else {
+            expBox.innerHTML = `<strong style="color:var(--wrong-color)">틀렸습니다. 💦</strong><br><br>정답: ${q.answer}번<br><br>${q.explanation}`;
+            if (!globalWrongNotes.some(note => note.id === q.id)) {
+                globalWrongNotes.push(q);
+            }
+        }
+
+        document.getElementById('btn-check').style.display = 'none';
+        document.getElementById('nav-btns').style.display = 'flex';
+        
+        document.getElementById('btn-next').innerText = 
+            (currentQIndex === currentQuizData.length - 1) ? '시험 종료' : '다음 문제';
+    }
+
+    function nextQuestion() {
+        if (currentQIndex < currentQuizData.length - 1) {
+            currentQIndex++;
+            renderQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('final-score').innerText = `${Math.round(score)}점`;
+        const correctCount = Math.round(score / (100 / currentQuizData.length));
+        document.getElementById('score-detail').innerText = `총 ${currentQuizData.length}문제 중 ${correctCount}문제 정답`;
+        navigate('result');
+    }
+
+    function renderWrongNotes() {
+        const container = document.getElementById('wrong-notes-container');
+        container.innerHTML = '';
+
+        if (globalWrongNotes.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:gray; padding: 30px;">아직 틀린 문제가 없습니다. 훌륭합니다! 👏</p>';
+            return;
+        }
+
+        globalWrongNotes.forEach(q => {
+            const noteDiv = document.createElement('div');
+            noteDiv.className = 'wrong-note-item';
+            noteDiv.innerHTML = `
+                <strong>${q.id}. ${q.question}</strong>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">
+                    ✅ <strong>정답: ${q.answer}번 (${q.options[q.answer - 1]})</strong>
+                </p>
+                <div style="margin-top: 10px; padding: 10px; background: #fff; border-radius: 5px; font-size: 0.9rem;">
+                    💡 <strong>해설:</strong> ${q.explanation}
+                </div>
+            `;
+            container.appendChild(noteDiv);
+        });
+    }
+</script>
+</body>
+</html>
