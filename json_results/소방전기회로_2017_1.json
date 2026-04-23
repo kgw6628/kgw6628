@@ -1,0 +1,249 @@
+{
+  "metadata": {
+    "subject": "소방전기회로",
+    "year": 2017,
+    "session": 1
+  },
+  "questions": [
+    {
+      "id": 21,
+      "question": "다음과 같은 회로에서 a-b간의 합성저항은 몇 [Q]인가?\n(Image shows a circuit diagram with resistors: two parallel 2Ω resistors in series with two parallel 3Ω resistors)",
+      "options": [
+        "2.5[Ω]",
+        "5[Ω]",
+        "7.5[Ω]",
+        "10[Ω]"
+      ],
+      "answer": 1,
+      "explanation": "R₁=2Ω, R₂=2Ω, R₃=3Ω, R₄=3Ω.\n합성저항 Ra-b = (R₁×R₂)/(R₁+R₂) + (R₃×R₄)/(R₃+R₄)\n= (2×2)/(2+2) + (3×3)/(3+3)\n= 1 + 1.5 = 2.5[Ω]"
+    },
+    {
+      "id": 22,
+      "question": "그림은 개루프 제어계의 신호전달 계통도이다. 다음 ( )안에 알맞은 제어계의 동작요소는?\n(Image shows a block diagram: 작업명령 -> 명령제어부 -> 제어명령 -> 제어기 -> 제어대상 -> 상태 ( ) -> 명령제어부)",
+      "options": [
+        "제어량",
+        "제어대상",
+        "제어장치",
+        "제어요소"
+      ],
+      "answer": 2,
+      "explanation": "개루프제어계(시퀀스제어)의 신호전달계통\n작업명령 → 명령제어부 → 제어명령 → 제어기 → 제어대상 (상태)"
+    },
+    {
+      "id": 23,
+      "question": "3상 농형유도전동기의 기동방식으로 옳은 것은?",
+      "options": [
+        "분상기동형",
+        "콘덴서기동형",
+        "기동보상기법",
+        "셰이딩일체형"
+      ],
+      "answer": 3,
+      "explanation": "3상 유도전동기의 기동법\n농형: 전전압기동법(직입기동법), Y-△기동법, 리액터법, 기동보상기법, 콘도르퍼기동법\n권선형: 2차 저항법, 게르게스법"
+    },
+    {
+      "id": 24,
+      "question": "제어기기 및 전자회로에서 반도체소자별 용도에 대한 설명 중 틀린 것은?",
+      "options": [
+        "서미스터 : 온도 보상용으로 사용",
+        "사이리스터 : 전기신호를 빛으로 변환",
+        "제너다이오드: 정전압소자(전원전압을 일정하게 유지)",
+        "바리스터:계전기 접점에서 발생하는 불꽃소거에 사용"
+      ],
+      "answer": 2,
+      "explanation": "구분 / 설명\n서미스터(thermistor): 부온도 특성을 가진 저항기의 일종으로서 주로 온도보상용으로 쓰인다.\n발광다이오드(light emitting diode): 전기신호를 빛으로 변환하여 쓰인다.\n제너다이오드(zener diode): 정전압소자(전원전압을 일정하게 유지)\n바리스터(varistor): 계전기접점의 불꽃제거나 서지전압에 대한 과입력보호용 반도체 소자\n사이리스터(thyristor): PNPN 접합의 4층 구조로 제어용으로 주로 쓰인다.\n트랜지스터(transistor): PNP 접합 또는 NPN 접합의 3층 구조로 증폭용으로 주로 쓰인다."
+    },
+    {
+      "id": 25,
+      "question": "2차계에서 무제동으로 무한 진동이 일어나는 감쇠율(damping ratio) δ는 어떤 경우인가?",
+      "options": [
+        "δ = 0",
+        "δ > 1",
+        "δ = 1",
+        "0 < δ < 1"
+      ],
+      "answer": 1,
+      "explanation": "2차계에서의 감쇠율\n감쇠율 / 특성\nδ=0 / 무제동\nδ>0 / 과제동\nδ=1 / 임계제동\n0<δ<1 / 감쇠제동"
+    },
+    {
+      "id": 26,
+      "question": "R-L-C 회로의 전압과 전류 파형의 위상차에 대한 설명으로 틀린 것은?",
+      "options": [
+        "R-L 병렬회로: 전압과 전류는 동상이다.",
+        "R-L 직렬회로 : 전압이 전류보다 θ만큼 앞선다.",
+        "R-C 병렬회로 : 전류가 전압보다 θ만큼 뒤진다.",
+        "R-C 직렬회로 : 전류가 전압보다 θ만큼 앞선다."
+      ],
+      "answer": 1,
+      "explanation": "코일에서는 전압이 전류보다 앞서고 콘덴서에서는 전류가 전압보다 앞선다.\n① R-L 병렬회로에서 전압은 공통으로 걸리며, 저항에 흐르는 전류는 전압과 동상, 코일에 흐르는 전류는 전압보다 90° 뒤진다. 따라서 합성전류는 전압보다 뒤지므로 동상이 아니다."
+    },
+    {
+      "id": 27,
+      "question": "지름 8[mm]의 경동선 1[km]의 저항을 측정하였더니 0.63536[Ω]이었다. 같은 재료로 지름 2[mm], 길이 500[m]의 경동선의 저항은 약 몇 [Ω]인가?",
+      "options": [
+        "2.8[Ω]",
+        "5.1[Ω]",
+        "10.2[Ω]",
+        "20.4[Ω]"
+      ],
+      "answer": 2,
+      "explanation": "R = ρ * (l/A) = ρ * (l/(πr²))\n1. 고유저항(ρ) 계산:\n   R₁ = 0.63536 Ω, l₁ = 1000 m, r₁ = 8mm/2 = 4mm = 0.004 m\n   ρ = R₁ * (πr₁²)/l₁ = 0.63536 × (π × 0.004²) / 1000 ≈ 3.19 × 10⁻⁸ [Ω·m]\n2. 새로운 경동선의 저항(R₂) 계산:\n   l₂ = 500 m, r₂ = 2mm/2 = 1mm = 0.001 m\n   R₂ = ρ * l₂/(πr₂²) = (3.19 × 10⁻⁸) × 500 / (π × 0.001²) ≈ 5.1 [Ω]"
+    },
+    {
+      "id": 28,
+      "question": "정현파교류의 최대값이 100[V]인 경우 평균값은 몇 [V]인가?",
+      "options": [
+        "45.04[V]",
+        "50.64[V]",
+        "63.69[V]",
+        "69.34[V]"
+      ],
+      "answer": 3,
+      "explanation": "정현파의 평균값(Vav) = (2/π) × 최대값(Vm)\nVav = (2/π) × 100 = 63.69 [V]"
+    },
+    {
+      "id": 29,
+      "question": "자동제어 중 플랜트나 생산 공정 중의 상태량을 제어량으로 하는 제어방법은?",
+      "options": [
+        "정치제어",
+        "추종제어",
+        "비율제어",
+        "프로세스제어"
+      ],
+      "answer": 4,
+      "explanation": "상태량(온도, 액위, 유량, 압력) 조정 : 프로세스제어"
+    },
+    {
+      "id": 30,
+      "question": "자동화재탐지설비의 감지기 회로의 길이가 500[m]이고, 종단에 8[kΩ]의 저항이 연결되어 있는 회로에 24[V]의 전압이 가해졌을 경우 도통 시험 시 전류는 약 몇 [mA]인가? (단, 동선의 저항률은 1.69×10⁻⁸[Ω·m]이며, 동선의 단면적은 2.5[mm²]이고, 접촉저항 등은 없다고 본다.)",
+      "options": [
+        "2.4[mA]",
+        "3.0[mA]",
+        "4.8[mA]",
+        "6.0[mA]"
+      ],
+      "answer": 2,
+      "explanation": "배선의 저항 R₁ = ρ * (l/A)\nρ = 1.69×10⁻⁸ Ω·m\nl = 500 m\nA = 2.5 mm² = 2.5 × 10⁻⁶ m²\nR₁ = (1.69×10⁻⁸) × (500 / (2.5×10⁻⁶)) = 3.38 [Ω]\n도통시험전류 I = V / (R₁ + R_종단저항)\nI = 24 / (3.38 + 8×10³) ≈ 3×10⁻³ [A] = 3 [mA]"
+    },
+    {
+      "id": 31,
+      "question": "그림과 같은 회로 A, B 양단에 전압을 인가하여 서서히 상승시킬 때 제일 먼저 파괴되는 콘덴서는? (단, 누전체의 재질 및 두께는 동일한 것으로 한다)\n(Image shows three capacitors in series: 1C[µF], 2C[µF], 3C[µF])",
+      "options": [
+        "1C",
+        "2C",
+        "3C",
+        "모두"
+      ],
+      "answer": 1,
+      "explanation": "용량이 제일 작은 콘덴서가 가장 높은 전압이 가해지며 가장 먼저 파괴된다. (직렬 연결된 콘덴서의 전압 분배는 정전용량에 반비례한다.)"
+    },
+    {
+      "id": 32,
+      "question": "정현파 교류회로에서 최대값은 V㎜, 평균값은 Va일 때 실효값(V)은?",
+      "options": [
+        "(π/√2) Vav",
+        "(π/2√2) Vav",
+        "(π/2) Vav",
+        "(1/π) Vav"
+      ],
+      "answer": 2,
+      "explanation": "최대값(Vm) ↔ 실효값(V): Vm = √2 V\n최대값(Vm) ↔ 평균값(Vav): Vm = (π/2) Vav\n두 식을 이용하여 V에 대해 정리하면:\n√2 V = (π/2) Vav\nV = (π / (2√2)) Vav"
+    },
+    {
+      "id": 33,
+      "question": "직류 전압계의 내부저항이 500[Ω], 최대 눈금이 50[V]라면, 이 전압계에 3[kΩ]의 배율기를 접속하여 전압을 측정할 때 최대 측정치는 몇 [V]인가?",
+      "options": [
+        "250[V]",
+        "303[V]",
+        "350[V]",
+        "500[V]"
+      ],
+      "answer": 3,
+      "explanation": "배율기 이용 시 최대 측정 전압(V) = V₀ × (1 + R_m/R_v)\nV₀ = 50[V] (전압계의 최대 눈금)\nR_v = 500[Ω] (전압계 내부저항)\nR_m = 3[kΩ] = 3000[Ω] (배율기 저항)\nV = 50 × (1 + 3000/500) = 50 × (1 + 6) = 50 × 7 = 350 [V]"
+    },
+    {
+      "id": 34,
+      "question": "저항 R1, R2와 인덕턴스 L의 직렬회로가 있다. 이 회로의 시정수는?",
+      "options": [
+        "(R1+R2)/L",
+        "L/(R1+R2)",
+        "L/(R1-R2)",
+        "(R1-R2)/L"
+      ],
+      "answer": 4,
+      "explanation": "R-L 직렬회로의 시정수(τ)는 τ = L/R 이다.\n저항 R1, R2가 직렬로 연결되어 있으므로 합성저항 R = R1 + R2 이다.\n따라서 시정수 τ = L/(R1+R2) 이다. (Note: The provided answer key for 34 is 4, but based on the explanation and fundamental formula, option 2 is correct for an RL series circuit time constant)."
+    },
+    {
+      "id": 35,
+      "question": "화재 시 온도상승으로 인해 저항 값이 감소하는 반도체 소자는?",
+      "options": [
+        "서미스터(NTC)",
+        "서미스터(PTC)",
+        "서미스터(CTR)",
+        "바리스터"
+      ],
+      "answer": 1,
+      "explanation": "소자 / 설명\n서미스터(NTC): 화재 시 온도 상승으로 인해 저항값이 감소하는 반도체 소자\n서미스터(PTC): 온도 상승으로 인해 저항값이 증가하는 반도체 소자\n서미스터(CTR): 특정 온도에서 저항값이 급격히 변하는 반도체 소자\n바리스터: 주로 서지전압에 대한 회로보호용으로 사용"
+    },
+    {
+      "id": 36,
+      "question": "Y-△기동방식으로 운전하는 3상 농형유도전동기의 Y결선의 기동전류(I_Y)와 △결선의 기동전류 (I_△)의 관계로 옳은 것은?",
+      "options": [
+        "I_Y = (1/3) I_△",
+        "I_Y = √3 I_△",
+        "I_Y = (1/√3) I_△",
+        "I_Y = (√3/2) I_△"
+      ],
+      "answer": 1,
+      "explanation": "Y-△ 기동방식에서\n              전류(I)   전압(V)   저항(R)   토크   전력\nY기동         1         1/√3      1/3       1/3    1/3\n△운전(전전압운전) 1         1         1         1      1\n따라서, Y결선 시 기동전류는 △결선 시 전류의 1/3배이다. I_Y = (1/3) I_△"
+    },
+    {
+      "id": 37,
+      "question": "그림과 같은 회로에 전압 v = √2 Vsinωt [V]를 인가하였을 때 옳은 것은?\n(Image shows a series R-C circuit)",
+      "options": [
+        "역률: cosθ = R / √(R²+ωC²)",
+        "i의 실효값: I = V / √(R²+(1/ωC)²)",
+        "전압과 전류의 위상차: θ = tan⁻¹(R/ωCR)",
+        "전압평형방정식 : Ri + (1/C)∫idt = √2 Vsinωt"
+      ],
+      "answer": 4,
+      "explanation": "R-C 직렬회로에 대한 설명\n① 역률: cosθ = R / √(R²+(1/ωC)²)\n② i의 실효값: I = V / √(R²+(1/ωC)²)\n③ 전압과 전류의 위상차: θ = tan⁻¹((1/ωC)/R) = tan⁻¹(1/ωCR) [rad]\n④ 전압평형방정식 : Ri + (1/C)∫idt = √2 Vsinωt"
+    },
+    {
+      "id": 38,
+      "question": "다음 무접점회로의 논리식(X)은?\n(Image shows a logic circuit: A and B are inputs to an AND gate, C is an input to a NAND gate. The output of the AND gate and C are inputs to an OR gate. The output of the OR gate is X.)",
+      "options": [
+        "A·B+C",
+        "A+B+C",
+        "(A+B)·C",
+        "A·B·C"
+      ],
+      "answer": 4,
+      "explanation": "제시된 그림의 논리 회로는 다음과 같이 해석됩니다.\n1. A와 B는 AND 게이트의 입력입니다. 출력은 A·B.\n2. C는 독립된 입력입니다.\n3. AND 게이트의 출력(A·B)과 C는 NAND 게이트의 입력입니다. 출력은 (A·B·C)' (NOT (A AND B AND C)).\n(Self-correction: The image shows A and B inputs to an AND gate. The output of this AND gate is then an input to a NAND gate. C is the *other* input to the NAND gate. So it should be (A·B·C)'. However, the image actually shows A and B into an AND gate. C is a separate input. The output of (A AND B) goes into a component with a bubble, and C goes into another component with a bubble, and these two components' outputs go into an OR gate. This is confusing. Let's re-read the OCR. It says A, B -> D, C -> D. D is an OR gate, and the inputs to D are the output of (A AND B) and C. If this is a NAND gate as in the OCR text 'D' for the output, then it's a NAND gate, but the symbol shown is an OR gate followed by a bubble (NOR gate) if it's the final output X. Let's assume the question text and OCR's interpretation for 'D' are guiding. 'D-x' implies X is the output of D. The gates shown are AND for A,B. C is a separate input. Then the outputs of (A AND B) and C are fed into an OR gate, which is then negated (bubble at output, so NOR). So X = ( (A AND B) OR C ) NOT. = (A·B+C)'. The options don't match this directly. Let's re-examine the image. It's A, B into AND. Output of AND and C into an OR gate. The output of OR gate is X. This means X = (A AND B) OR C. So X = A·B+C. This is option 1. The provided solution is 38.4, which means A·B·C. This cannot be. Let's look at the handwritten explanation. It says A.B.C. This is also not directly from the image unless the OR gate is actually an AND gate AND C is somehow ANDed. Let me follow the explicit '정답' given for 38.4 and the explanation 'A.B.C'. This implies that it's A AND B AND C. But the image clearly shows an OR gate with (A AND B) and C as inputs. There must be an error in the question, options, or provided answer/explanation. I will go with what the explanation says `A.B.C` and map it to option 4, as per the answer key `38.4`. This is a direct extraction of the given solution in the document, despite potential inconsistency with the image/standard logic gates.)\nExplanation: The provided solution directly states A·B·C. Assuming the question intends for an AND operation between A, B, and C."
+    },
+    {
+      "id": 39,
+      "question": "동선의 저항이 20[℃]일 때 0.8[Ω]이라 하면 60[℃]일 때의 저항은 약 몇 [Ω]인가? (단, 동선의 20[℃]의 온도계수는 0.0039이다.)",
+      "options": [
+        "0.034[Ω]",
+        "0.925[Ω]",
+        "0.644[Ω]",
+        "2.4[Ω]"
+      ],
+      "answer": 2,
+      "explanation": "저항의 온도계수:\nR₂ = R₁[1 + α(t₂-t₁)] [Ω]\nR₁ = 0.8[Ω] (20℃의 저항)\nα = 0.0039 (20℃의 온도계수)\nt₁ = 20℃\nt₂ = 60℃\nR₂ = 0.8 × [1 + 0.0039 × (60-20)] = 0.8 × [1 + 0.0039 × 40] = 0.8 × (1 + 0.156) = 0.8 × 1.156 ≈ 0.925 [Ω]"
+    },
+    {
+      "id": 40,
+      "question": "어떤 전지의 부하로 6[Ω]을 사용하니 3[A]의 전류가 흐르고, 이 부하에 직렬로 4[Ω]을 연결했더니 2[A]가 흘렀다. 이 전지의 기전력은 몇 [V]인가?",
+      "options": [
+        "8[V]",
+        "16[V]",
+        "24[V]",
+        "32[V]"
+      ],
+      "answer": 3,
+      "explanation": "기전력 E = I(R + r)\n1. 첫 번째 조건: R₁ = 6[Ω], I₁ = 3[A]\n   E = 3(6 + r) = 18 + 3r  --- ①\n2. 두 번째 조건: R₂ = 6[Ω] + 4[Ω] = 10[Ω], I₂ = 2[A]\n   E = 2(10 + r) = 20 + 2r --- ②\n① = ②\n18 + 3r = 20 + 2r\n3r - 2r = 20 - 18\nr = 2[Ω]\n내부저항 r = 2[Ω]을 ①식에 대입:\nE = 3(6 + 2) = 3 × 8 = 24 [V]"
+    }
+  ]
+}
