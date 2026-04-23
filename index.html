@@ -80,7 +80,7 @@
             <h2>🔥 제1과목: 소방원론</h2>
             <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
         </div>
-        <div class="subject-card" onclick="openSubject('소방전기일반')">
+        <div class="subject-card" onclick="openSubject('소방전기회로')"> <h2>⚡ 제2과목: 소방전기회로</h2>
             <h2>⚡ 제2과목: 소방전기일반</h2>
             <p style="color: var(--text-light); font-size: 0.9rem;">연도별 기출문제 풀이</p>
         </div>
@@ -204,16 +204,27 @@ updateCountdown();
             
             const data = await response.json();
             
-            // 무적 방어 코드
+            // 🚀 초강력 무적 방어 코드 (AI가 이름을 맘대로 바꿔도 다 찾아냄)
+            let foundQuestions = null;
+            
             if (data.questions) {
-                currentQuizData = data.questions; 
-            } else if (Array.isArray(data) && data.length > 0 && data[0].questions) {
-                currentQuizData = data[0].questions; 
+                foundQuestions = data.questions; 
             } else if (Array.isArray(data)) {
-                currentQuizData = data; 
+                foundQuestions = data; 
             } else {
+                // JSON 안을 다 뒤져서 첫 번째로 나오는 배열(Array)을 무조건 정답으로 간주함!
+                for (let key in data) {
+                    if (Array.isArray(data[key])) {
+                        foundQuestions = data[key];
+                        break;
+                    }
+                }
+            }
+
+            if (!foundQuestions || foundQuestions.length === 0) {
                 throw new Error("JSON 파일 안에 문제 데이터가 없습니다.");
             }
+            currentQuizData = foundQuestions;
 
             currentQIndex = 0;
             score = 0;
